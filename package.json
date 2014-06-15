@@ -6,13 +6,17 @@
     "node-cassandra-cql": "~0.4.4"
   },
   "devDependencies": {
+    "async": "^0.9.0",
+    "chai": "~1.9.1",
     "mocha": "~1.13.0",
     "proxyquire": "~0.6.0",
     "sinon": "~1.9.1",
-    "chai": "~1.9.1",
     "sinon-chai": "~2.5.0"
   },
   "scripts": {
-    "test": "mocha -R spec --recursive tests"
+    "test": "npm run check-coverage",
+    "unit-tests": "mocha -R spec --recursive tests",
+    "check-coverage": "npm run coverage && istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100",
+    "coverage": "istanbul cover --dir coverage ./node_modules/mocha/bin/_mocha -- --recursive ./tests"
   }
 }
