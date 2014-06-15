@@ -1,4 +1,18 @@
 {
   "name": "orm-cassandra-adapter",
-  "version": "0.0.1"
+  "version": "0.0.0",
+  "repository": "https://github.com/godaddy/orm-cassandra-adapter",
+  "dependencies": {
+    "node-cassandra-cql": "~0.4.4"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "proxyquire": "~0.6.0",
+    "sinon": "~1.9.1",
+    "chai": "~1.9.1",
+    "sinon-chai": "~2.5.0"
+  },
+  "scripts": {
+    "test": "mocha -R spec --recursive tests"
+  }
 }
