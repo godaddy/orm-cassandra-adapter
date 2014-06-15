@@ -88,5 +88,26 @@ describe('The CassandraAdapter', function() {
         done();
       });
     });
-  })
+  });
+
+  describe('propertyToValue method', function() {
+    it('generates a hinted parameter value', function() {
+      var adapter = new CassandraAdapter({ path: "/keyspace", hosts: "host1:2304,host2,host3" });
+
+      var parameter = adapter.propertyToValue('originalValue', { type: 'type' });
+
+      expect(parameter.value).to.equal('originalValue');
+      expect(parameter.hint).to.equal('type');
+    });
+  });
+
+  describe('valueToProperty method', function() {
+    it('returns the original value', function() {
+      var adapter = new CassandraAdapter({ path: "/keyspace", hosts: "host1:2304,host2,host3" });
+
+      var value = adapter.valueToProperty('originalValue');
+
+      expect(value).to.equal('originalValue');
+    });
+  });
 });
